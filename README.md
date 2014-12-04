@@ -1,6 +1,6 @@
 ##Data Structures
 
-A collection of Go code for me to re-learn data structures including:
+A collection of [Go](https://golang.org/) code for me to re-learn data structures including:
 
 * [**Stacks**](/stack)
     A fixed size structure with push and pop methods, following the FIFO rule (first in, last out)
