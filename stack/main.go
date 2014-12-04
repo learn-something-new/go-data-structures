@@ -6,18 +6,25 @@ import (
 )
 
 func main() {
-	var stack Stack.Stack
+	stack := Stack.NewStack()
+	size := 10
 
-	stack.Push(1)
-	stack.Push(2)
-	stack.Push(3)
-	stack.Push(4)
-	stack.Push(5)
-	stack.Push(6)
-	stack.Push(7)
-	stack.Push(8)
-	stack.Push(9)
-	stack.Push(10)
+	for x := 0; x < size; x++ {
+		fmt.Printf("Pushing %v\n", x)
+		success := stack.Push(x)
 
-	fmt.Printf("%v\n", stack.Pop())
+		if !success {
+			fmt.Printf("Push failed! Stack is full.")
+		}
+	}
+
+	for x := 0; x < size; x++ {
+		num := stack.Pop()
+
+		if num == -1 {
+			fmt.Printf("Pop failed! Stack is empty.")
+		} else {
+			fmt.Printf("Popped %v\n", num)
+		}
+	}
 }

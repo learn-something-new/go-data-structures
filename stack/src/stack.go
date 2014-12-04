@@ -1,28 +1,43 @@
 package Stack
 
-import "fmt"
-
-const Max int = 10
+const max int = 10
 
 type Stack struct {
-	Arr [Max]int
-	Top int
+	arr [max]int
+	top int
 }
 
-func (s *Stack) Push(n int) {
-	if s.Top < Max {
-		s.Arr[s.Top] = n
-		s.Top++
-	} else {
-		fmt.Printf("Stack is full!\n")
+func NewStack() *Stack {
+	var s Stack = Stack{}
+	s.top = -1
+
+	return &s
+}
+
+func (s *Stack) Size() int {
+	return s.top
+}
+
+func (s *Stack) Push(n int) bool {
+	status := false
+
+	if s.top < max {
+		s.top++
+		s.arr[s.top] = n
+
+		status = true
 	}
+
+	return status
 }
 
 func (s *Stack) Pop() int {
-	var num int
+	num := -1
 
-	num = s.Arr[s.Top-1]
-	num = 2
+	if s.top >= 0 {
+		num = s.arr[s.top]
+		s.top--
+	}
 
 	return num
 }
