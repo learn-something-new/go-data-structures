@@ -7,17 +7,16 @@ import (
 
 func main() {
 	stack := Stack.NewStack()
-	size := 11
+	size := 20
 
 	for x := 0; x < size; x++ {
-		fmt.Printf("Pushing %v\n", x)
-		success := stack.Push(x)
+		fmt.Printf("Pushing %v\n", (x + 1))
 
-		fmt.Printf("The length is %v\n", stack.Size())
+		stack.Push(x + 1)
 
-		if !success {
-			fmt.Printf("Push failed! Stack is full.")
-		}
+		fmt.Printf("The count is %v\n", stack.Top())
+		fmt.Printf("The cap is %v\n", stack.Len())
+		fmt.Printf("The length is %v\n\n", stack.Cap())
 	}
 
 	for x := 0; x < size; x++ {
