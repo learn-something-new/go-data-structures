@@ -15,30 +15,27 @@ func NewStack() *Stack {
 	return &s
 }
 
-func (s *Stack) Size() int {
+func (s *Stack) Top() int {
 	return s.top
 }
 
-func (s *Stack) Push(n int) bool {
-	status := false
+func (s *Stack) Len() int {
+	return len(s.arr)
+}
 
-	if (s.top + 1) < cap(s.arr) {
-		s.top++
-		s.arr[s.top] = n
+func (s *Stack) Cap() int {
+	return cap(s.arr)
+}
 
-		status = true
-	} else {
-		newArr := make([]int, (len(s.arr)+1)*2)
-		copy(newArr, s.arr)
-		s.arr = newArr
+func (s *Stack) Push(n int) {
+	s.top++
 
-		s.top++
-		s.arr[s.top] = n
-
-		status = true
+	if (s.top) >= cap(s.arr) {
+		newArr := make([]int, max)
+		s.arr = append(s.arr, newArr...)
 	}
 
-	return status
+	s.arr[s.top] = n
 }
 
 func (s *Stack) Pop() int {
