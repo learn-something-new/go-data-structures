@@ -30,14 +30,12 @@ func (s *Stack) Cap() int {
 func (s *Stack) Push(n int) {
 	s.top++
 
-	if (s.top) < cap(s.arr) {
-		s.arr[s.top] = n
-	} else {
+	if (s.top) >= cap(s.arr) {
 		newArr := make([]int, max)
 		s.arr = append(s.arr, newArr...)
-
-		s.arr[s.top] = n
 	}
+
+	s.arr[s.top] = n
 }
 
 func (s *Stack) Pop() int {

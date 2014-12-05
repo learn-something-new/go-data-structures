@@ -13,10 +13,6 @@ func main() {
 		fmt.Printf("Pushing %v\n", (x + 1))
 
 		stack.Push(x + 1)
-
-		fmt.Printf("The count is %v\n", stack.Top())
-		fmt.Printf("The cap is %v\n", stack.Len())
-		fmt.Printf("The length is %v\n\n", stack.Cap())
 	}
 
 	for x := 0; x < size; x++ {
