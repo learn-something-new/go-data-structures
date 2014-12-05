@@ -3,38 +3,37 @@ package Queue
 const max int = 10
 
 type Queue struct {
-	arr   [max]int
+	arr   []int
 	front int
 	end   int
 }
 
 func NewQueue() *Queue {
 	var q Queue = Queue{}
+	q.arr = make([]int, max)
 	q.front = -1
 	q.end = -1
 
 	return &q
 }
 
-func (q *Queue) Add(n int) bool {
-	status := false
-
+func (q *Queue) Add(n int) {
 	if q.front == -1 && q.end == -1 {
 		q.front++
 		q.end++
 
 		q.arr[q.end] = n
-		status = true
 	} else {
 		q.end++
 
 		if q.end < max {
 			q.arr[q.end] = n
-			status = true
+		} else {
+			newArr := make([]int, (cap(q.arr)+1)*2)
+			copy(newArr, q.arr)
+			q.arr = newArr
 		}
 	}
-
-	return status
 }
 
 func (q *Queue) Del() int {

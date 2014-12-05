@@ -7,15 +7,11 @@ import (
 
 func main() {
 	queue := Queue.NewQueue()
-	size := 10
+	size := 15
 
 	for x := 0; x < size; x++ {
 		fmt.Printf("Adding %v\n", x)
-		success := queue.Add(x)
-
-		if !success {
-			fmt.Printf("Add failed! Queue is full.")
-		}
+		queue.Add(x)
 	}
 
 	for x := 0; x < size; x++ {
