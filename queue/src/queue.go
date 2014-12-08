@@ -34,11 +34,11 @@ func (q *Queue) Cap() int {
 }
 
 func (q *Queue) Add(n int) {
-	q.end++
-
 	if q.front == -1 && q.end == -1 {
+		q.end++
 		q.front++
 	} else {
+		q.end++
 		if q.end >= cap(q.arr) {
 			newArr := make([]int, max)
 			q.arr = append(q.arr, newArr...)
@@ -50,30 +50,28 @@ func (q *Queue) Add(n int) {
 
 func (q *Queue) Del() int {
 	num := -1
-	//temp := -1
+	temp := -1
 
 	num = q.front
 
 	if q.front >= -1 {
-		//num = q.arr[q.front]
+		num = q.arr[q.front]
 
-		/*
-		 *        for x := 0; x <= q.end; x++ {
-		 *
-		 *            if x+1 <= q.end {
-		 *                temp = q.arr[x+1]
-		 *                q.arr[x] = temp
-		 *            } else {
-		 *                q.end--
-		 *
-		 *                if q.end == -1 {
-		 *                    q.front = q.end
-		 *                } else {
-		 *                    q.front = 0
-		 *                }
-		 *            }
-		 *        }
-		 */
+		for x := 0; x <= q.end; x++ {
+
+			if x+1 <= q.end {
+				temp = q.arr[x+1]
+				q.arr[x] = temp
+			} else {
+				q.end--
+
+				if q.end == -1 {
+					q.front = q.end
+				} else {
+					q.front = 0
+				}
+			}
+		}
 	}
 
 	return num
