@@ -10,7 +10,7 @@ type Queue struct {
 
 func NewQueue() *Queue {
 	var q Queue = Queue{}
-	q.arr = make([]int, max)
+	q.arr = make([]int, 1, max)
 	q.front = -1
 	q.end = -1
 
@@ -35,17 +35,12 @@ func (q *Queue) Cap() int {
 
 func (q *Queue) Add(n int) {
 	if q.front == -1 && q.end == -1 {
-		q.end++
 		q.front++
-	} else {
-		q.end++
-		if q.end >= cap(q.arr) {
-			newArr := make([]int, max)
-			q.arr = append(q.arr, newArr...)
-		}
 	}
 
-	q.arr[q.end] = n
+	q.end++
+
+	q.arr = append(q.arr, n)
 }
 
 func (q *Queue) Del() int {
