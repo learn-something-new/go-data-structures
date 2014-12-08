@@ -1,9 +1,12 @@
-##Data Structures
+#data Structures
 
 A collection of [Go](https://golang.org/) code for me to re-learn data structures including:
 
 * [**Stacks**](/stack)
-    A fixed size structure with push and pop methods, following the FIFO rule (first in, last out)
+    A fixed size structure with push and pop methods, following the FILO rule (first in, last out)
+    
+* [**Queues**](/queue)
+    A fixed size structure with add and del methods, following the FIFO rule (first in, first out)
 
 ####These were originally all written in [C++](https://github.com/obihann/datastructures), feel free to check them out.
 
