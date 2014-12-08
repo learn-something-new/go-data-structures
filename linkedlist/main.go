@@ -13,6 +13,10 @@ func main() {
 		list.Append(x)
 	}
 
+	list.Delete(3)
+	list.Delete(9)
+	list.Delete(4)
+
 	arr := list.List()
 
 	for x := 0; x < len(arr); x++ {
