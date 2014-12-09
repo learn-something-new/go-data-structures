@@ -28,6 +28,23 @@ func (l *List) Append(n int) {
 	}
 }
 
+func (l *List) Delete(n int) error {
+	if l.p != nil {
+		temp := l.p
+
+		for temp != nil {
+			if temp.Link != nil && temp.Link.Data == n {
+				temp.Link = temp.Link.Link
+				break
+			}
+
+			temp = temp.Link
+		}
+	}
+
+	return nil
+}
+
 func (l *List) List() []int {
 	arr := make([]int, 1, 10)
 
