@@ -16,6 +16,7 @@ func main() {
 	list.Delete(3)
 	list.Delete(9)
 	list.Delete(4)
+	list.Delete(7)
 
 	arr := list.List()
 
