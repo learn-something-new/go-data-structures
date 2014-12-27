@@ -10,18 +10,21 @@ func main() {
 	size := 20
 
 	for x := 0; x < size; x++ {
-		fmt.Printf("Adding %v\n", (x + 1))
-
-		queue.Add(x + 1)
+		if err := queue.Add(x + 1); err != nil {
+			fmt.Printf("An error occured while trying to push to the stack: %s\n", err)
+			break
+		} else {
+			fmt.Printf("Adding %v\n", (x + 1))
+		}
 	}
 
 	for x := 0; x < size; x++ {
-		num := queue.Del()
+		num, err := queue.Del()
 
-		if num == -1 {
+		if err != nil {
 			fmt.Printf("Del failed! Queue is empty.")
 		} else {
-			fmt.Printf("Deleted %v\n", num)
+			fmt.Printf("Deleted %v\n", (num + 1))
 		}
 	}
 }
