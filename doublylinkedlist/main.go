@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"github.com/obihann/GoDataStructures/linkedlist/src"
+	"github.com/obihann/GoDataStructures/doublylinkedlist/src"
 )
 
 func main() {
@@ -33,9 +33,9 @@ func main() {
 		fmt.Printf("An error occured while attempting to delete %v: %s\n", 7, err)
 	}
 
-	arr := list.List()
+	arr := list.ListRev()
 
 	for x := 0; x < len(arr); x++ {
-		fmt.Printf("%v\n", (arr[x] + 1))
+		fmt.Printf("%v\n", arr[x])
 	}
 }
