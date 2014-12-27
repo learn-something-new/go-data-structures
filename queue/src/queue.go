@@ -1,5 +1,7 @@
 package Queue
 
+import "errors"
+
 const max int = 10
 
 type Queue struct {
@@ -33,7 +35,7 @@ func (q *Queue) Cap() int {
 	return cap(q.arr)
 }
 
-func (q *Queue) Add(n int) {
+func (q *Queue) Add(n int) error {
 	if q.front == -1 && q.end == -1 {
 		q.front++
 	}
@@ -41,9 +43,11 @@ func (q *Queue) Add(n int) {
 	q.end++
 
 	q.arr = append(q.arr, n)
+
+	return nil
 }
 
-func (q *Queue) Del() int {
+func (q *Queue) Del() (int, error) {
 	num := -1
 	temp := -1
 
@@ -67,7 +71,9 @@ func (q *Queue) Del() int {
 				}
 			}
 		}
+	} else {
+		return -1, errors.New("Stack is empty")
 	}
 
-	return num
+	return num, nil
 }

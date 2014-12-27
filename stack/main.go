@@ -6,22 +6,24 @@ import (
 )
 
 func main() {
-	stack := Stack.NewStack()
 	size := 20
+	stack := Stack.NewStack()
 
 	for x := 0; x < size; x++ {
-		fmt.Printf("Pushing %v\n", (x + 1))
-
-		stack.Push(x + 1)
+		if err := stack.Push(x + 1); err != nil {
+			fmt.Printf("An error occured while trying to push to the stack: %s\n", err)
+			break
+		} else {
+			fmt.Printf("Pushing %v\n", (x + 1))
+		}
 	}
 
 	for x := 0; x < size; x++ {
-		num := stack.Pop()
-
-		if num == -1 {
-			fmt.Printf("Pop failed! Stack is empty.")
+		if num, err := stack.Pop(); err != nil {
+			fmt.Printf("An error occuured while trying to pop from the stack: %s.\n", err)
+			break
 		} else {
-			fmt.Printf("Popped %v\n", num)
+			fmt.Printf("Popped %v\n", (num + 1))
 		}
 	}
 }

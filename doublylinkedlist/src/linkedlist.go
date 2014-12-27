@@ -11,7 +11,7 @@ func NewList() *List {
 	return &l
 }
 
-func (l *List) Append(n int) {
+func (l *List) Append(n int) error {
 	if l.head == nil {
 		l.head = NewNode()
 		l.end = NewNode()
@@ -30,6 +30,8 @@ func (l *List) Append(n int) {
 		temp.Next = node
 		l.end = node
 	}
+
+	return nil
 }
 
 func (l *List) Delete(n int) error {
