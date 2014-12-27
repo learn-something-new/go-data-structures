@@ -7,16 +7,31 @@ import (
 
 func main() {
 	list := LinkedList.NewList()
+	size := 20
 
-	for x := 0; x <= 10; x++ {
-		fmt.Printf("adding %v\n", x)
-		list.Append(x)
+	for x := 0; x < size; x++ {
+		if err := list.Append(x); err != nil {
+			fmt.Printf("An error occured while trying to append to the list: %s\n", err)
+		} else {
+			fmt.Printf("adding %v\n", (x + 1))
+		}
 	}
 
-	list.Delete(3)
-	list.Delete(9)
-	list.Delete(4)
-	list.Delete(7)
+	if err := list.Delete(3); err != nil {
+		fmt.Printf("An error occured while attempting to delete %v: %s\n", 3, err)
+	}
+
+	if err := list.Delete(9); err != nil {
+		fmt.Printf("An error occured while attempting to delete %v: %s\n", 9, err)
+	}
+
+	if err := list.Delete(4); err != nil {
+		fmt.Printf("An error occured while attempting to delete %v: %s\n", 4, err)
+	}
+
+	if err := list.Delete(7); err != nil {
+		fmt.Printf("An error occured while attempting to delete %v: %s\n", 7, err)
+	}
 
 	arr := list.ListRev()
 

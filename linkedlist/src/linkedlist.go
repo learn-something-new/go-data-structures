@@ -10,7 +10,7 @@ func NewList() *List {
 	return &l
 }
 
-func (l *List) Append(n int) {
+func (l *List) Append(n int) error {
 	if l.p == nil {
 		l.p = NewNode()
 		l.p.Data = n
@@ -26,6 +26,8 @@ func (l *List) Append(n int) {
 
 		temp.Link = node
 	}
+
+	return nil
 }
 
 func (l *List) Delete(n int) error {
